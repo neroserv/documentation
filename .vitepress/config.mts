@@ -135,7 +135,8 @@ export default defineConfig({
               { text: 'Certbot installieren', link: '/rootserver/anwendungen/certbot-installieren' },
               { text: 'PHPMyAdmin + Nginx + MySQL installieren', link: '/rootserver/anwendungen/phpmyadmin-nginx-mysql-installieren' },
               { text: 'Screen installieren und nutzen', link: '/rootserver/anwendungen/screen-installieren-und-nutzen' },
-              { text: 'Pterodactyl Panel installieren', link: '/rootserver/anwendungen/pterodactyl-installieren' }
+              { text: 'Pterodactyl Panel installieren', link: '/rootserver/anwendungen/pterodactyl-installieren' },
+              { text: 'Mailcow Mailserver installieren', link: '/rootserver/anwendungen/mailcow-installieren' }
             ]
           },
           {

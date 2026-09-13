@@ -32,6 +32,8 @@
    - `api.beispiel.com` (für API-Server)
 4. Der Hostname muss eine **gültige Domain** sein, die dir gehört
 
+![rDNS (PTR) Einstellungen im Dashboard mit Eingabefeldern für IPv4 und IPv6](/images/rdns-ptr-panel.webp)
+
 ### Schritt 3: Speichern
 
 1. Klicke auf **rDNS speichern** oder **Änderungen speichern**
