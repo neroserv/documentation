@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "docs",
+  lang: "de-DE",
 
   title: "Dokumentation",
   description: "Willkommen in der offiziellen ForgeHost Dokumentation",
@@ -14,7 +15,55 @@ export default defineConfig({
     logo: 'https://cdn.forgehost.de/branding/ForgeHostLogo.svg',
 
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: 'Suchen',
+            buttonAriaLabel: 'Suchen'
+          },
+          modal: {
+            displayDetails: 'Details anzeigen',
+            resetButtonTitle: 'Suche zurücksetzen',
+            backButtonTitle: 'Suche schließen',
+            noResultsText: 'Keine Ergebnisse für',
+            footer: {
+              selectText: 'auswählen',
+              selectKeyAriaLabel: 'Enter',
+              navigateText: 'navigieren',
+              navigateUpKeyAriaLabel: 'Pfeil nach oben',
+              navigateDownKeyAriaLabel: 'Pfeil nach unten',
+              closeText: 'schließen',
+              closeKeyAriaLabel: 'Escape'
+            }
+          }
+        }
+      }
+    },
+
+    outline: {
+      level: [2, 3],
+      label: 'Auf dieser Seite'
+    },
+
+    docFooter: {
+      prev: 'Vorherige Seite',
+      next: 'Nächste Seite'
+    },
+
+    returnToTopLabel: 'Zurück nach oben',
+    sidebarMenuLabel: 'Menü',
+    darkModeSwitchLabel: 'Erscheinungsbild',
+    lightModeSwitchTitle: 'Zum hellen Design wechseln',
+    darkModeSwitchTitle: 'Zum dunklen Design wechseln',
+    externalLinkIcon: true,
+
+    lastUpdated: {
+      text: 'Zuletzt aktualisiert',
+      formatOptions: {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      }
     },
 
     nav: [
@@ -178,8 +227,43 @@ export default defineConfig({
         text: 'Gameserver',
         items: [
           {
-            text: 'FiveM',
+            text: 'Minecraft',
             collapsed: false,
+            items: [
+              {
+                text: 'Server auf Windows installieren',
+                collapsed: true,
+                items: [
+                  { text: 'Grundlagen', link: '/gameserver/minecraft/windows/grundlagen' },
+                  { text: 'Vanilla', link: '/gameserver/minecraft/windows/vanilla' },
+                  { text: 'Paper', link: '/gameserver/minecraft/windows/paper' },
+                  { text: 'Spigot', link: '/gameserver/minecraft/windows/spigot' },
+                  { text: 'Forge', link: '/gameserver/minecraft/windows/forge' },
+                  { text: 'Fabric', link: '/gameserver/minecraft/windows/fabric' },
+                  { text: 'Modrinth Modpack', link: '/gameserver/minecraft/windows/modrinth' },
+                  { text: 'BungeeCord Netzwerk', link: '/gameserver/minecraft/windows/bungeecord' }
+                ]
+              },
+              {
+                text: 'Server auf Linux installieren',
+                collapsed: true,
+                items: [
+                  { text: 'Grundlagen', link: '/gameserver/minecraft/linux/grundlagen' },
+                  { text: 'Vanilla', link: '/gameserver/minecraft/linux/vanilla' },
+                  { text: 'Paper', link: '/gameserver/minecraft/linux/paper' },
+                  { text: 'Spigot', link: '/gameserver/minecraft/linux/spigot' },
+                  { text: 'Forge', link: '/gameserver/minecraft/linux/forge' },
+                  { text: 'Fabric', link: '/gameserver/minecraft/linux/fabric' },
+                  { text: 'Modrinth Modpack', link: '/gameserver/minecraft/linux/modrinth' },
+                  { text: 'BungeeCord Netzwerk', link: '/gameserver/minecraft/linux/bungeecord' }
+                ]
+              },
+              { text: 'DNS-Einträge für Minecraft', link: '/dashboard/produkte/dns-eintraege/minecraft' }
+            ]
+          },
+          {
+            text: 'FiveM',
+            collapsed: true,
             items: [
               { text: 'Server installieren (Linux)', link: '/gameserver/fivem/installation-linux' },
               { text: 'Lizenz Key hinterlegen', link: '/gameserver/fivem/lizenz-key-hinterlegen' },

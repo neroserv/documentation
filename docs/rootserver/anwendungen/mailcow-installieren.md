@@ -4,6 +4,12 @@ Mailcow ist ein vollständiger Mailserver-Stack, der als Sammlung von Docker-Con
 
 Diese Anleitung führt dich von einem leeren KVM-Server bis zum ersten versendeten E-Mail: Voraussetzungen prüfen, DNS-Einträge setzen, Docker und Mailcow installieren, absichern, Domain und Postfächer anlegen.
 
+::: danger Vorab: Backup erstellen
+Ein Mailserver verwaltet Daten, die sich nicht wiederherstellen lassen, wenn etwas schiefgeht. Lege **vor der Installation** einen Snapshot bzw. ein Backup deines Servers an — und halte danach regelmäßige Sicherungen vor, besonders vor jedem Update.
+
+So erstellst du ein Backup deines KVM-Servers: [Backup erstellen](/dashboard/produkte/backup-erstellen)
+:::
+
 ::: tip Video-Empfehlung
 Ein ausführliches Video zum Thema hat **jusec** veröffentlicht. Dort werden alle Schritte live durchgegangen — inklusive typischer Stolperfallen. Vielen Dank an jusec für das wirklich gute und verständliche Video!
 
@@ -376,11 +382,39 @@ Dasselbe Skript spielt mit `restore` auch wieder ein. Lege die Sicherungen zusä
 
 ---
 
+## Zustellbarkeit testen
+
+Ob deine DNS-Einträge in der Praxis greifen, zeigt sich erst beim echten Versand. Zum Prüfen und Nachschärfen nutzen wir gerne [mail-tester.com](https://www.mail-tester.com/) — das Tool analysiert eine real zugestellte Nachricht und benennt konkret, was noch fehlt.
+
+So gehst du vor:
+
+1. Öffne [mail-tester.com](https://www.mail-tester.com/) — dort wird dir eine zufällige Test-Adresse angezeigt.
+2. Schreibe von deinem neuen Postfach aus eine ganz normale E-Mail an diese Adresse, am besten mit Betreff und ein paar Sätzen Text.
+3. Klicke auf der Seite auf **Then check your score**.
+
+Du bekommst eine Bewertung von 0 bis 10 und dazu eine aufgeschlüsselte Liste. Geprüft werden unter anderem:
+
+- **SPF, DKIM und DMARC** — ob die Einträge existieren, syntaktisch stimmen und zum Absender passen
+- **Reverse DNS** — ob sich die IP deines Servers zum Hostnamen auflöst und wieder zurück
+- **Blacklists** — ob deine IP-Adresse auf bekannten Sperrlisten steht
+- **SpamAssassin-Score** — wie der Inhalt der Mail selbst bewertet wird
+- **Aufbau der Nachricht** — fehlende Header, defekte Links, fehlender Text-Teil bei HTML-Mails
+
+::: tip 10/10 als Ziel
+Strebe die volle Punktzahl an. Jeder Abzug hat einen benannten Grund, und die Seite verrät dir direkt, welcher Eintrag dafür verantwortlich ist. Nach jeder DNS-Änderung testest du einfach mit einer **neuen** Test-Adresse erneut — jede Adresse ist nur für einen Durchlauf gedacht.
+:::
+
+::: warning Ergebnis richtig einordnen
+Eine frisch vergebene IP-Adresse hat bei großen Anbietern noch keine Reputation aufgebaut. Selbst bei 10/10 kann es in den ersten Tagen vorkommen, dass Mails im Spam landen. Das legt sich, sobald regelmäßig Nachrichten von deinem Server zugestellt werden.
+:::
+
+---
+
 ## Troubleshooting
 
 - **Zertifikat wird nicht ausgestellt:** Port 80 muss von außen erreichbar sein und der A-Record auf die richtige IP zeigen. Logs prüfen mit `docker compose logs acme-mailcow`.
 - **Mails gehen raus, kommen aber nirgends an:** In fast allen Fällen fehlt der PTR-Eintrag oder der ausgehende Port 25 ist gesperrt.
-- **Mails landen im Spam:** Prüfe SPF, DKIM und DMARC über die DNS-Seite in Mailcow. Frische IP-Adressen brauchen zusätzlich einige Tage, bis sie bei großen Anbietern Vertrauen aufgebaut haben.
+- **Mails landen im Spam:** Prüfe SPF, DKIM und DMARC über die DNS-Seite in Mailcow und lass zusätzlich einen Testversand über [mail-tester.com](https://www.mail-tester.com/) laufen — dort siehst du direkt, welcher Eintrag noch klemmt. Frische IP-Adressen brauchen zusätzlich einige Tage, bis sie bei großen Anbietern Vertrauen aufgebaut haben.
 - **Container starten nicht:** Meist fehlt Arbeitsspeicher. Prüfe mit `free -h`, ob Swap aktiv ist.
 - **Port 80 oder 443 belegt:** Ein laufender Nginx oder Apache blockiert Mailcow. Dienst stoppen oder die Ports in der `mailcow.conf` ändern.
 - **Login schlägt fehl trotz richtigem Passwort:** Prüfe, ob für das Postfach der Zugang zur Weboberfläche überhaupt aktiviert ist.
@@ -400,6 +434,7 @@ Das oben verlinkte Video von **jusec** geht alle Schritte live durch und zeigt z
 ## Weiterführende Links
 
 - [Offizielle Mailcow-Dokumentation](https://docs.mailcow.email/de/)
+- [mail-tester.com](https://www.mail-tester.com/) – Zustellbarkeit und DNS-Einträge testen
 - [rDNS erstellen](/dashboard/produkte/rdns-erstellen)
 - [DNS verwalten](/dashboard/produkte/dns-verwalten)
 - [Docker installieren](/rootserver/anwendungen/docker-installieren)
