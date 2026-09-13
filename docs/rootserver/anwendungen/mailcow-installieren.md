@@ -191,7 +191,7 @@ Jetzt erzeugst du die zentrale Konfigurationsdatei:
 
 Das Skript stellt dir einige Fragen. Die wichtigste ist gleich die erste: der **FQDN deines Mailservers**. Trage hier `mail.example.com` ein — exakt den Hostnamen, den du im A-Record und im PTR hinterlegt hast. Danach wählst du noch Zeitzone und Branch (`master` für den stabilen Zweig).
 
-![Mailcow generate_config.sh – Abfrage des Hostnamens und der Zeitzone](/images/mailcow/generate-config.png)
+![Mailcow generate_config.sh – Abfrage des Hostnamens und der Zeitzone](/images/mailcow/generate-config.webp)
 
 Als Ergebnis liegt die Datei `mailcow.conf` im Verzeichnis. Für ein Standard-Setup passt sie so, wie sie ist. Anpassungen nimmst du bei Bedarf hier vor:
 
@@ -231,7 +231,7 @@ Melde dich mit den Standardzugangsdaten an:
 - Benutzername: `admin`
 - Passwort: `moohoo`
 
-![Login-Maske der Mailcow-Weboberfläche](/images/mailcow/mailcow-erster-login.png)
+![Login-Maske der Mailcow-Weboberfläche](/images/mailcow/mailcow-erster-login.webp)
 
 ::: danger Sofort ändern
 Diese Zugangsdaten sind öffentlich bekannt und identisch bei jeder Mailcow-Installation. Ändere das Passwort, bevor du irgendetwas anderes tust.
@@ -245,17 +245,17 @@ Diese Zugangsdaten sind öffentlich bekannt und identisch bei jeder Mailcow-Inst
 
 Öffne oben rechts **System → Konfiguration** und klicke beim Benutzer `admin` auf **Bearbeiten**.
 
-![Benutzerübersicht in der Mailcow-Konfiguration mit der Schaltfläche Bearbeiten](/images/mailcow/admin-bearbeiten.png)
+![Benutzerübersicht in der Mailcow-Konfiguration mit der Schaltfläche Bearbeiten](/images/mailcow/admin-bearbeiten.webp)
 
 Vergib nun ein langes, zufälliges Passwort und speichere die Änderung.
 
-![Formular zum Setzen eines neuen Admin-Passworts](/images/mailcow/neues-passwort.png)
+![Formular zum Setzen eines neuen Admin-Passworts](/images/mailcow/neues-passwort.webp)
 
 ### Zwei-Faktor-Authentifizierung aktivieren
 
 Ein Mailserver-Admin-Zugang ist ein lohnendes Ziel — ein zweiter Faktor sollte daher gesetzt sein. Du findest die Einstellung ebenfalls unter **System → Konfiguration** im Reiter **Zwei-Faktor-Authentifizierung**.
 
-![Auswahl der 2FA-Methoden in Mailcow](/images/mailcow/2fa.png)
+![Auswahl der 2FA-Methoden in Mailcow](/images/mailcow/2fa.webp)
 
 Mailcow unterstützt WebAuthn/FIDO2-Sticks sowie klassische TOTP-Apps wie Aegis, 2FAS oder den Google Authenticator.
 
@@ -269,11 +269,11 @@ Notiere dir die Wiederherstellungscodes an einem sicheren Ort. Ohne zweiten Fakt
 
 Jetzt bringen wir Mailcow bei, für welche Domain es zuständig ist. Navigiere zu **E-Mail → Konfiguration** und klicke auf **Domain hinzufügen**.
 
-![Domainübersicht in Mailcow mit der Schaltfläche Domain hinzufügen](/images/mailcow/domain-hinzufuegen.png)
+![Domainübersicht in Mailcow mit der Schaltfläche Domain hinzufügen](/images/mailcow/domain-hinzufuegen.webp)
 
 Im Dialog trägst du oben deine Domain ein. Die weiteren Felder — maximale Postfachgröße, Anzahl der Aliase, Mailbox-Limit — kannst du bei den Standardwerten belassen und später jederzeit anpassen.
 
-![Dialog zum Anlegen einer neuen E-Mail-Domain](/images/mailcow/domain-hinzufuegen2.png)
+![Dialog zum Anlegen einer neuen E-Mail-Domain](/images/mailcow/domain-hinzufuegen2.webp)
 
 ::: tip Richtig speichern
 Wähle zum Abschluss **Domain hinzufügen und SOGo neustarten**. Ohne den Neustart kennt das Webmail die neue Domain noch nicht.
@@ -287,11 +287,11 @@ Beim Anlegen der Domain hat Mailcow im Hintergrund ein DKIM-Schlüsselpaar erzeu
 
 Klicke in der Domainübersicht auf **DNS**. Mailcow prüft daraufhin sämtliche Einträge deiner Domain und zeigt an, was bereits korrekt gesetzt ist und was noch fehlt. Optionale Empfehlungen sind gesondert markiert.
 
-![DNS-Prüfung in Mailcow mit Soll- und Ist-Werten je Eintrag](/images/mailcow/mailcow-dns.png)
+![DNS-Prüfung in Mailcow mit Soll- und Ist-Werten je Eintrag](/images/mailcow/mailcow-dns.webp)
 
 Ganz unten findest du den DKIM-Eintrag. Kopiere Name und Wert unverändert in die DNS-Verwaltung deiner Domain.
 
-![DKIM-Eintrag in der DNS-Verwaltung](/images/mailcow/dkim.png)
+![DKIM-Eintrag in der DNS-Verwaltung](/images/mailcow/dkim.webp)
 
 ::: tip Geduld bei der Prüfung
 Nach dem Speichern kann es bis zu 24 Stunden dauern, bis der Eintrag überall bekannt ist. Lade die DNS-Seite in Mailcow später erneut — alle Zeilen sollten dann grün sein.
@@ -303,11 +303,11 @@ Nach dem Speichern kann es bis zu 24 Stunden dauern, bis der Eintrag überall be
 
 Die Domain steht, jetzt kommt das erste Postfach. Wechsle auf den Reiter **Mailboxen** und klicke auf **Mailbox hinzufügen**.
 
-![Mailbox-Übersicht mit der Schaltfläche Mailbox hinzufügen](/images/mailcow/mailbox-hinzufuegen.png)
+![Mailbox-Übersicht mit der Schaltfläche Mailbox hinzufügen](/images/mailcow/mailbox-hinzufuegen.webp)
 
 Im Formular ist vor allem das Feld **Benutzername** entscheidend: Es bildet den Teil vor dem `@` deiner künftigen Adresse. Vor- und Nachname erscheinen später beim Empfänger als Anzeigename. Vergib ein sicheres Passwort und lege bei Bedarf ein Speicherlimit fest.
 
-![Formular zum Anlegen eines neuen Postfachs](/images/mailcow/postfach-erstellen.png)
+![Formular zum Anlegen eines neuen Postfachs](/images/mailcow/postfach-erstellen.webp)
 
 Mit **Hinzufügen** ist das Postfach sofort einsatzbereit.
 
