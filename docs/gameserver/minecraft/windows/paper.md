@@ -6,6 +6,10 @@ Paper ist die meistgenutzte Server-Software für Minecraft. Sie basiert auf Spig
 Java, Portfreigabe, Startdatei und EULA sind für alle Server-Varianten identisch und hier zusammengefasst: [Grundlagen](/gameserver/minecraft/windows/grundlagen)
 :::
 
+::: tip Empfohlen: automatisch per Installer
+Der ForgeHost Minecraft Installer richtet einen Paper-Server inklusive Java, Firewall-Freigabe und Startdatei mit einem Befehl ein: [Schnellstart per Installer](/gameserver/minecraft/windows/grundlagen#installer)
+:::
+
 ## Video-Tutorial
 
 Ergänzend zu dieser Anleitung findest du hier ein aktuelles Video von **The Breakdown**. Vielen Dank für das hilfreiche Tutorial!
