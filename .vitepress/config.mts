@@ -234,6 +234,7 @@ export default defineConfig({
                 text: 'Server auf Windows installieren',
                 collapsed: true,
                 items: [
+                  { text: 'Installer (empfohlen)', link: '/gameserver/minecraft/windows/installer' },
                   { text: 'Grundlagen', link: '/gameserver/minecraft/windows/grundlagen' },
                   { text: 'Vanilla', link: '/gameserver/minecraft/windows/vanilla' },
                   { text: 'Paper', link: '/gameserver/minecraft/windows/paper' },

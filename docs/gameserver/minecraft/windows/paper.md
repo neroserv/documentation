@@ -7,7 +7,7 @@ Java, Portfreigabe, Startdatei und EULA sind für alle Server-Varianten identisc
 :::
 
 ::: tip Empfohlen: automatisch per Installer
-Der ForgeHost Minecraft Installer richtet einen Paper-Server inklusive Java, Firewall-Freigabe und Startdatei mit einem Befehl ein: [Schnellstart per Installer](/gameserver/minecraft/windows/grundlagen#installer)
+Der ForgeHost Minecraft Installer richtet einen Paper-Server inklusive Java, Firewall-Freigabe und Startdatei mit einem Befehl ein: [Server per Installer einrichten](/gameserver/minecraft/windows/installer)
 :::
 
 ## Video-Tutorial
